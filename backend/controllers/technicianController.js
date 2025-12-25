@@ -9,7 +9,7 @@ exports.getTechnicianProfile = async (req, res) => {
   try {
     const technician = await Technician.findOne({
       user: req.params.userId
-    }).populate("user", "name email role");
+    }).populate("user", "name email role phone ");
 
     if (!technician) {
       return res.status(404).json({ message: "Technician profile not found" });
@@ -27,7 +27,8 @@ exports.getTechnicianProfile = async (req, res) => {
 exports.getTechnicianBookings = async (req, res) => {
   try {
     const bookings = await Booking.find({
-      technician: req.params.technicianId
+      technician: req.params.technicianId,
+      status: "booked"
     })
       .populate("user", "name email")
       .sort({ date: 1, slot: 1 });
@@ -86,28 +87,4 @@ exports.getAvailableSlots = async (req, res) => {
       booked: booked.includes(slot),
     }))
   );
-};
-
-exports.updateAvailability = async (req, res) => {
-  try {
-    const { userId, workingDays, workingHours } = req.body;
-
-    const technician = await Technician.findOne({ user: userId });
-
-    if (!technician) {
-      return res.status(404).json({ message: "Technician not found" });
-    }
-
-    technician.workingDays = workingDays;
-    technician.workingHours = workingHours;
-
-    await technician.save();
-
-    res.json({
-      message: "Availability updated successfully",
-      technician
-    });
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
 };

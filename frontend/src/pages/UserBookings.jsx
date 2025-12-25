@@ -23,36 +23,70 @@ export default function UserBookings({ user, onClose }) {
   }, []);
 
   return (
-    <div className="modal-overlay">
-      <div className="modal">
-        <h3 className="modal-title">My Bookings</h3>
-        {loading && <p>Loading bookings...</p>}
+    /* Overlay */
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
+      {/* Modal */}
+      <div className="relative w-full max-w-md max-h-[80vh] overflow-y-auto rounded-xl bg-green-50 shadow-2xl p-5">
 
-        {!loading && bookings.length === 0 && <p>No bookings yet</p>}
+        {/* ❌ Close Button (Fixed Top Right) */}
+        <button
+          onClick={onClose}
+          className="absolute top-3 right-3 w-8 h-8 flex items-center justify-center rounded-full 
+                     bg-red-500 text-white font-bold hover:bg-red-600 transition"
+          aria-label="Close"
+        >
+          ✕
+        </button>
 
-        {bookings.map((b) => (
-          <div key={b._id} className="booking-card">
-            <div className="booking-info">
-              <div className="date">{b.date}</div>
-              <div className="slot">{b.slot}</div>
+        {/* Title */}
+        <h3 className="text-lg font-semibold text-gray-800 mb-4">
+          My Bookings
+        </h3>
 
-              <div className="tech">
-                Technician Name :
-                <span>{b.technician.user.name}</span>
+        {/* Loading */}
+        {loading && (
+          <p className="text-sm text-gray-600">Loading bookings...</p>
+        )}
+
+        {/* Empty */}
+        {!loading && bookings.length === 0 && (
+          <p className="text-sm text-gray-600">No bookings yet</p>
+        )}
+
+        {/* Booking Cards */}
+        <div className="space-y-4">
+          {bookings.map((b) => (
+            <div
+              key={b._id}
+              className="rounded-lg border border-green-300 bg-green-100 p-4 shadow-sm"
+            >
+              <div className="text-sm text-gray-600">{b.date}</div>
+
+              <div className="font-semibold text-gray-800">
+                {b.slot}
               </div>
 
-              <div className="category">{b.technician.category}</div>
+              <div className="text-sm text-gray-700 mt-1">
+                Technician Name :
+                <span className="font-semibold ml-1">
+                  {b.technician.user.name}
+                </span>
+              </div>
+
+              <div className="text-green-700 font-semibold text-sm mt-1">
+                {b.technician.category}
+              </div>
+
+              <button
+                onClick={() => cancelBooking(b._id)}
+                className="mt-3 inline-block rounded-md bg-red-500 px-4 py-1.5
+                           text-sm text-white hover:bg-red-600 transition"
+              >
+                Cancel Booking
+              </button>
             </div>
-
-            <button className="cancel-btn" onClick={() => cancelBooking(b._id)}>
-              Cancel Booking
-            </button>
-          </div>
-        ))}
-
-        <button className="close-btn" onClick={onClose}>
-          Close
-        </button>
+          ))}
+        </div>
       </div>
     </div>
   );

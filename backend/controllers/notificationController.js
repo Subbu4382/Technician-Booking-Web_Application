@@ -16,21 +16,13 @@ exports.getNotificationsByTechnician = async (req, res) => {
   }
 };
 
-/**
- * Mark notification as read
- */
-exports.markAsRead = async (req, res) => {
+exports.clearNotifications = async (req, res) => {
   try {
-    const notification = await Notification.findById(req.params.id);
+    await Notification.deleteMany({
+      technician: req.params.technicianId
+    });
 
-    if (!notification) {
-      return res.status(404).json({ message: "Notification not found" });
-    }
-
-    notification.isRead = true;
-    await notification.save();
-
-    res.json({ message: "Notification marked as read" });
+    res.json({ message: "All notifications cleared" });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }

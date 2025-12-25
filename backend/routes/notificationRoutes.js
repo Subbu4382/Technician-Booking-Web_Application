@@ -1,25 +1,42 @@
+// const express = require("express");
+// const router = express.Router();
+
+// // const Notification = require("../models/Notification");
+
+// const {
+//   getNotificationsByTechnician,
+//   clearNoti
+// } = require("../controllers/notificationController");
+
+// // Get notifications for a technician
+// router.get("/technician/:technicianId", getNotificationsByTechnician);
+
+// // Mark notification as read
+// // router.put("/read/:id", markAsRead);
+
+// router.delete("/technician/:technicianId", async (req, res) => {
+//   await Notification.deleteMany({
+//     technician: req.params.technicianId
+//   });
+//   res.json({ message: "Notifications cleared" });
+// });
+
+
+// module.exports = router;
+
+
 const express = require("express");
 const router = express.Router();
 
-const Notification = require("../models/Notification");
-
 const {
   getNotificationsByTechnician,
-  markAsRead
+  clearNotifications
 } = require("../controllers/notificationController");
 
 // Get notifications for a technician
 router.get("/technician/:technicianId", getNotificationsByTechnician);
 
-// Mark notification as read
-router.put("/read/:id", markAsRead);
-
-router.delete("/technician/:technicianId", async (req, res) => {
-  await Notification.deleteMany({
-    technician: req.params.technicianId
-  });
-  res.json({ message: "Notifications cleared" });
-});
-
+// Clear all notifications for a technician
+router.delete("/technician/:technicianId", clearNotifications);
 
 module.exports = router;

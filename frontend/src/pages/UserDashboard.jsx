@@ -72,7 +72,7 @@ export default function UserDashboard({ user }) {
 
           <MonthlyCalendar selectedDate={date} onSelect={setDate} />
 
-          {date && <SlotList slots={slots} onBook={bookSlot} />}
+          {date && <SlotList slots={slots}  selectedDate={date} onBook={bookSlot} />}
         </>
       )}
     </div>

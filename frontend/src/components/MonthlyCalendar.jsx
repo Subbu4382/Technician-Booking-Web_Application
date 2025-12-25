@@ -21,29 +21,27 @@ export default function MonthlyCalendar({ selectedDate, onSelect }) {
   }
 
   const isPastDate = (date) => date < todayISO;
-
   const isCurrentMonth =
     month === today.getMonth() && year === today.getFullYear();
 
   return (
-    <div className="bg-white p-4 rounded-lg shadow">
+    <div className="bg-white rounded-xl shadow-sm border p-5">
       {/* Header */}
-      <div className="flex justify-between items-center mb-4">
-        {/* Disable previous month */}
+      <div className="flex items-center justify-between mb-5">
         <button
           disabled={isCurrentMonth}
           onClick={() => setMonth((m) => m - 1)}
-          className={`px-3 py-1 rounded
+          className={`w-9 h-9 flex items-center justify-center rounded-lg border
             ${
               isCurrentMonth
                 ? "bg-gray-100 text-gray-400 cursor-not-allowed"
-                : "bg-gray-200 hover:bg-gray-300"
+                : "hover:bg-gray-100"
             }`}
         >
           ←
         </button>
 
-        <h3 className="font-semibold text-gray-800">
+        <h3 className="text-base font-semibold text-gray-800 tracking-wide">
           {new Date(year, month).toLocaleString("default", {
             month: "long",
             year: "numeric",
@@ -52,14 +50,14 @@ export default function MonthlyCalendar({ selectedDate, onSelect }) {
 
         <button
           onClick={() => setMonth((m) => m + 1)}
-          className="px-3 py-1 bg-gray-200 rounded hover:bg-gray-300"
+          className="w-9 h-9 flex items-center justify-center rounded-lg border hover:bg-orange-100"
         >
           →
         </button>
       </div>
 
       {/* Week Days */}
-      <div className="grid grid-cols-7 text-center text-xs text-gray-500 mb-2">
+      <div className="grid grid-cols-7 text-center text-xs font-medium text-gray-500 mb-3">
         {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((d) => (
           <div key={d}>{d}</div>
         ))}
@@ -73,18 +71,19 @@ export default function MonthlyCalendar({ selectedDate, onSelect }) {
               key={i}
               disabled={isCurrentMonth && isPastDate(d)}
               onClick={() => onSelect(d)}
-              className={`p-2 rounded text-sm border transition
+              className={`
+                h-10 rounded-lg text-sm font-medium transition-all
                 ${
                   selectedDate === d
-                    ? "bg-green-600 text-white"
+                    ? "bg-green-600 text-white shadow"
                     : d === todayISO
-                    ? "border-green-600 text-green-700 font-semibold"
-                    : "hover:bg-green-100"
+                    ? "border border-green-500 text-green-700"
+                    : "hover:bg-green-50"
                 }
                 ${
                   isCurrentMonth && isPastDate(d)
                     ? "bg-gray-100 text-gray-400 cursor-not-allowed"
-                    : ""
+                    : "text-gray-700"
                 }
               `}
             >
