@@ -106,40 +106,51 @@ export default function UserDashboard({ user }) {
         <option>Computer Repair</option>
       </select>
 
-      {/* TECHNICIAN LIST */}
-      {loadingTechs ? (
-        <p className="text-gray-600">Loading technicians...</p>
-      ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-          {technicians.map((t) => (
-            <div
-              key={t._id}
-              onClick={() => {
-                setSelectedTech(t);
-                setSelectedDate(null);
-                setSlots([]);
-              }}
-              className={`
-                p-6 rounded-xl cursor-pointer transition-all duration-200 border-2
-                ${
-                  selectedTech?._id === t._id
-                    ? "border-orange-600 bg-orange-100 shadow-md scale-[1.02]"
-                    : "border-gray-300 bg-white hover:border-orange-400 hover:shadow"
-                }
-              `}
-            >
-              <p className="font-bold text-lg">
-                {t.user?.name || "Technician"}
-              </p>
-              <p className="text-sm text-gray-600">{t.category}</p>
+    
+     {/* TECHNICIAN LIST */}
+{loadingTechs ? (
+  <p className="text-gray-600">Loading technicians...</p>
+) : technicians.length === 0 ? (
+  <div className="mt-6 p-6 rounded-xl border border-orange-300 bg-orange-50 text-center">
+    <p className="text-orange-700 font-semibold text-lg">
+      No technicians for this category right now
+    </p>
+    <p className="text-sm text-orange-500 mt-1">
+      Please try another category or check again later
+    </p>
+  </div>
+) : (
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+    {technicians.map((t) => (
+      <div
+        key={t._id}
+        onClick={() => {
+          setSelectedTech(t);
+          setSelectedDate(null);
+          setSlots([]);
+        }}
+        className={`
+          p-6 rounded-xl cursor-pointer transition-all duration-200 border-2
+          ${
+            selectedTech?._id === t._id
+              ? "border-orange-600 bg-orange-100 shadow-md scale-[1.02]"
+              : "border-gray-300 bg-white hover:border-orange-400 hover:shadow"
+          }
+        `}
+      >
+        <p className="font-bold text-lg">
+          {t.user?.name || "Technician"}
+        </p>
+        <p className="text-sm text-gray-600">{t.category}</p>
 
-              <span className="inline-block mt-2 px-3 py-1 text-xs rounded-full bg-orange-200 text-orange-800">
-                {t.category}
-              </span>
-            </div>
-          ))}
-        </div>
-      )}
+        <span className="inline-block mt-2 px-3 py-1 text-xs rounded-full bg-orange-200 text-orange-800">
+          {t.category}
+        </span>
+      </div>
+    ))}
+  </div>
+)}
+
 
       {/* DATE + SLOT SECTION */}
       {selectedTech && (
