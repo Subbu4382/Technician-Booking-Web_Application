@@ -1,7 +1,7 @@
 export default function Navbar({ user, onLogout, onShowBookings }) {
   return (
     <nav className="bg-orange-200 border-b border-green-800 px-8 py-8 flex items-center justify-between">
-      <h1 className="text-xl font-bold text-green-900">
+      <h1 className="text-2xl font-bold text-green-900">
         Technician Booking
       </h1>
 
@@ -15,7 +15,7 @@ export default function Navbar({ user, onLogout, onShowBookings }) {
           </button>
         )}
 
-        <span className="text-m text-gray-1000">
+        <span className="text-xl text-gray-1000">
           {user.name} <span className="text-gray-500">({user.role})</span>
         </span>
 

@@ -40,7 +40,11 @@ const bookingSchema = new mongoose.Schema(
  */
 bookingSchema.index(
   { technician: 1, date: 1, slot: 1 },
-  { unique: true }
+  {
+    unique: true,
+    partialFilterExpression: { status: "booked" }
+  }
 );
+
 
 module.exports = mongoose.model("Booking", bookingSchema);
