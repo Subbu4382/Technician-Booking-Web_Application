@@ -35,7 +35,7 @@ export default function MonthlyCalendar({ selectedDate, onSelect }) {
             ${
               isCurrentMonth
                 ? "bg-gray-100 text-gray-400 cursor-not-allowed"
-                : "hover:bg-gray-100"
+                : "hover:bg-orange-200"
             }`}
         >
           ←
@@ -78,7 +78,7 @@ export default function MonthlyCalendar({ selectedDate, onSelect }) {
                     ? "bg-green-600 text-white shadow"
                     : d === todayISO
                     ? "border border-green-500 text-green-700"
-                    : "hover:bg-green-50"
+                    : "hover:bg-green-100"
                 }
                 ${
                   isCurrentMonth && isPastDate(d)
