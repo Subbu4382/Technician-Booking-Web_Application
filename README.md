@@ -143,7 +143,7 @@ To design and implement a **user-friendly, scalable technician booking system** 
 ## 🗂️ Project Structure
 
 ### Frontend
-
+```
 frontend/
 ├── src/
 │ ├── api/
@@ -189,7 +189,7 @@ backend/
 ├── server.js
 └── .env
 
-
+```
 ---
 
 ## 🗄️ Database Design
@@ -223,24 +223,50 @@ backend/
 
 ### Backend
 
-cd backend
-npm install
-npm run dev
+- cd backend
+- npm install
+- npm run dev
 
 ### Frontend
 
-cd frontend
-npm install
-npm run dev
+- cd frontend
+- npm install
+- npm run dev
 
 🔐 Environment Variables
 
 Create a .env file inside backend/:
 
-PORT=5000
-MONGO_URI=your_mongodb_uri
-JWT_SECRET=your_secret_key
+- PORT=5000
+- MONGO_URI=your_mongodb_uri
+- JWT_SECRET=your_secret_key
 
 ### Project Source Code
 
-GitHub: https://github.com/Subbu4382/Technician-Booking-Web_Application/
+- **GitHub Repository (Full Source Code):**  
+  https://github.com/Subbu4382/Technician-Booking-Web_Application/
+
+---
+
+## 🌐 Live Deployment
+
+The application is fully deployed and accessible online.
+
+### 🔹 Frontend (Vercel)
+- **URL:** https://technician-booking-web-application.vercel.app
+- **Platform:** Vercel
+- **Tech:** React (Vite) + Tailwind CSS
+
+### 🔹 Backend (Render)
+- **Base API URL:** https://technician-booking-web-application.onrender.com
+- **Sample API Endpoint:**  
+  https://technician-booking-web-application.onrender.com/api/technicians
+- **Platform:** Render
+- **Tech:** Node.js, Express, MongoDB Atlas
+
+### 🔹 Database (MongoDB Atlas)
+- **Cloud Provider:** MongoDB Atlas
+- **Usage:** Stores users, technicians, bookings, and notifications securely
+
+> ⚠️ Note: The backend may take a few seconds to wake up on first request due to Render’s free tier cold start.
+
