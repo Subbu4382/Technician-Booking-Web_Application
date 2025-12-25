@@ -143,7 +143,7 @@ To design and implement a **user-friendly, scalable technician booking system** 
 ## 🗂️ Project Structure
 
 ### Frontend
-
+```
 frontend/
 ├── src/
 │ ├── api/
@@ -189,7 +189,7 @@ backend/
 ├── server.js
 └── .env
 
-
+```
 ---
 
 ## 🗄️ Database Design
