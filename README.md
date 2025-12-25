@@ -23,7 +23,6 @@ To design and implement a **user-friendly, scalable technician booking system** 
 
 ### Frontend
 - React (Vite)
-- JavaScript (JS / JSX)
 - Tailwind CSS
 - Axios
 
@@ -31,7 +30,6 @@ To design and implement a **user-friendly, scalable technician booking system** 
 - Node.js
 - Express.js
 - MongoDB Atlas
-- Mongoose
 - JWT Authentication
 
 ---
@@ -73,7 +71,7 @@ To design and implement a **user-friendly, scalable technician booking system** 
 2. Selects technician category (Electrician, Plumber, etc.)
 3. Selects a technician
 4. Chooses a date from **monthly calendar**
-5. Selects a time slot (12-hour format)
+5. Selects a time slot
 6. Booking is created
 7. Technician receives notification
 8. User views booking in **My Bookings**
@@ -101,7 +99,6 @@ To design and implement a **user-friendly, scalable technician booking system** 
 - Duplicate bookings prevented using MongoDB unique index
 - Only future dates are selectable
 - Past dates are disabled
-- Slots are displayed in **12-hour format**
 
 **Example:**
 
@@ -153,9 +150,9 @@ frontend/
 │ │ └── api.js
 │ ├── components/
 │ │ ├── Navbar.jsx
-│ │ ├── WeeklyCalendar.jsx
+│ │ ├── SlotList.jsx
 │ │ ├── MonthlyCalendar.jsx
-│ │ ├── NotificationPanel.jsx
+│ │ ├── NotificationList.jsx
 │ ├── pages/
 │ │ ├── Login.jsx
 │ │ ├── Register.jsx
@@ -163,7 +160,7 @@ frontend/
 │ │ ├── UserBookings.jsx
 │ │ ├── TechnicianDashboard.jsx
 │ ├── utils/
-│ │ └── calendar.js
+│ │ └── auth.js
 │ ├── App.jsx
 │ ├── main.jsx
 │ └── index.css
@@ -176,6 +173,7 @@ backend/
 │ ├── authController.js
 │ ├── bookingController.js
 │ ├── notificationController.js
+| ├── technicianController.js
 ├── models/
 │ ├── User.js
 │ ├── Technician.js
