@@ -29,7 +29,7 @@ export default function TechnicianDashboard({ user }) {
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-xl font-bold">Technician Dashboard</h2>
 
-        {/* 🔔 Notification Badge */}
+        {/*  Notification Badge */}
         <div className="relative">
           <button
             onClick={() => setShowNotes(true)}

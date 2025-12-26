@@ -15,16 +15,16 @@ app.use(express.json());
 const connectDB = async () => {
   try {
     await mongoose.connect(process.env.MONGO_URI);
-    console.log("✅ MongoDB Atlas Connected Successfully");
+    console.log(" MongoDB Atlas Connected Successfully");
   } catch (error) {
-    console.error("❌ MongoDB Connection Failed:", error.message);
+    console.error(" MongoDB Connection Failed:", error.message);
     process.exit(1);
   }
 };
 
 connectDB();
 
-// ✅ REGISTER ALL ROUTES
+// REGISTER ALL ROUTES
 app.use("/api/auth", require("./routes/authRoutes"));
 app.use("/api/bookings", require("./routes/bookingsRoutes"));
 app.use("/api/technicians", require("./routes/technicianRoutes"));
@@ -33,5 +33,5 @@ app.use("/api/notifications", require("./routes/notificationRoutes"));
 // Server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
-  console.log(`🚀 Backend running on port ${PORT}`);
+  console.log(` Backend running on port ${PORT}`);
 });

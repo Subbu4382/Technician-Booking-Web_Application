@@ -42,7 +42,7 @@ exports.createBooking = async (req, res) => {
       return res.status(404).json({ message: "Technician not found" });
     }
 
-    // ⛔ BLOCK expired slots
+    //  BLOCK expired slots
     if (isSlotExpired(date, slot)) {
       return res.status(400).json({
         message: "This slot time has already passed"
@@ -110,7 +110,7 @@ exports.getBookingsByTechnician = async (req, res) => {
       .populate("user", "name phone")
       .sort({ date: 1 });
 
-    // ✅ Filter expired slots
+    // Filter expired slots
     const upcoming = bookings.filter(
       b => !isSlotExpired(b.date, b.slot)
     );

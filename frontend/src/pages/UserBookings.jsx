@@ -28,7 +28,7 @@ export default function UserBookings({ user, onClose }) {
       {/* Modal */}
       <div className="relative w-full max-w-md max-h-[80vh] overflow-y-auto rounded-xl bg-green-50 shadow-2xl p-5">
 
-        {/* ❌ Close Button (Fixed Top Right) */}
+        {/*  Close Button (Fixed Top Right) */}
         <button
           onClick={onClose}
           className="absolute top-3 right-3 w-8 h-8 flex items-center justify-center rounded-full 

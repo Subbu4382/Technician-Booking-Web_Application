@@ -1,7 +1,7 @@
 
 
 export default function SlotList({ slots, onBook, selectedDate }) {
-  // 🔒 Check if a slot is expired
+  //  Check if a slot is expired
   const isSlotExpired = (date, slot) => {
     const now = new Date();
     const bookingDate = new Date(date);

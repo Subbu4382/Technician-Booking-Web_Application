@@ -76,7 +76,7 @@ export default function UserDashboard({ user }) {
         slot,
       });
 
-      alert("✅ Booking successful");
+      alert("🟢 Booking successful");
 
       // refresh slots after booking
       setSelectedDate(null);

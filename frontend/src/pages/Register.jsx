@@ -12,26 +12,26 @@ export default function Register({ onSwitch }) {
   });
 
 const register = async () => {
-  // 1️⃣ Basic validations
+  // 1️ Basic validations
   if (!form.name || !form.email || !form.password || !form.phone) {
     alert("All fields are required");
     return;
   }
 
-  // 2️⃣ Email validation
+  // 2️ Email validation
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailRegex.test(form.email)) {
     alert("Please enter a valid email address");
     return;
   }
 
-  // 3️⃣ Phone validation (Indian example)
+  // 3️ Phone validation (Indian example)
   if (!/^\d{10}$/.test(form.phone)) {
     alert("Phone number must be 10 digits");
     return;
   }
 
-  // 4️⃣ Normalize email (IMPORTANT)
+  // 4️ Normalize email (IMPORTANT)
   const payload = {
     ...form,
     email: form.email.toLowerCase()
